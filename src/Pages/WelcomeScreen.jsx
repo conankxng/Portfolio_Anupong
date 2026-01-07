@@ -246,7 +246,7 @@ const WelcomeScreen = ({ onLoadingComplete }) => {
                         backgroundImage: `linear-gradient(45deg, ${THEME.gradFrom}, ${THEME.gradTo})`,
                       }}
                     >
-                      <TypewriterEffect text="www.eki.ffffffffmy.id" />
+                      <TypewriterEffect text="anupong-portfolio19s.netlify.app" />
                     </span>
                   </div>
                 </a>
