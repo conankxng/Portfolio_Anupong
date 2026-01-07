@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Core ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", serif;
+  scroll-behavior: smooth;
+  /* สกอร์ลบาร์สีหลัก (แดง/ชมพู) */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 2, 2, 0.85) rgba(53, 5, 23, 0.55);
+}
+
+html,
+body {
+  overflow-x: hidden;
+  /* พื้นหลังโทนแดงเข้ม */
+  background: #100008;
+  scroll-behavior: smooth !important;
+}
+
+/* ===== Blob Float ===== */
+@keyframes blob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+.animate-blob {
+  animation: blob 8s infinite;
+}
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
+
+/* ===== Custom Scrollbar (WebKit) ===== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: transparent;
+}
+::-webkit-scrollbar-track {
+  /* รางสกอร์ลบาร์แดงเข้ม + เบลอ */
+  background: rgba(16, 0, 8, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(247, 85, 217, 0.12);
+}
+::-webkit-scrollbar-thumb {
+  /* แท่งสกอร์ลบาร์ สีแดง→ชมพู + กลอสอ่อน */
+  background: linear-gradient(180deg, rgba(255, 2, 2, 0.55), rgba(247, 85, 217, 0.55));
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    inset 0 0 20px rgba(247, 85, 217, 0.25),
+    0 0 10px rgba(255, 2, 2, 0.25);
+  transition: all 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, rgba(255, 2, 2, 0.7), rgba(247, 85, 217, 0.7));
+  border: 1px solid rgba(247, 85, 217, 0.35);
+  box-shadow:
+    inset 0 0 30px rgba(247, 85, 217, 0.35),
+    0 0 15px rgba(255, 2, 2, 0.35);
+}
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, rgba(255, 2, 2, 0.85), rgba(247, 85, 217, 0.85));
+  border: 1px solid rgba(247, 85, 217, 0.45);
+  box-shadow:
+    inset 0 0 40px rgba(247, 85, 217, 0.45),
+    0 0 20px rgba(255, 2, 2, 0.45);
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* ===== AOS performance hint ===== */
+[data-aos] { will-change: transform, opacity !important; }
+
+/* ===== Shine/Highlight ===== */
+@keyframes shine {
+  from { left: -100%; }
+  to   { left: 200%; }
+}
+.animate-shine { animation: shine 1.5s ease-in-out infinite; }
+
+/* ===== Text Selection สีตามธีม ===== */
+::selection {
+  background: linear-gradient(45deg, #ff0202 10%, #f755d9 93%);
+  color: #ffffff;
+}
+::-moz-selection {
+  background: linear-gradient(45deg, #ff0202 10%, #f755d9 93%);
+  color: #ffffff;
+}
+
+/* ===== ตัวช่วยเงา/กลอสตามธีม (ใช้เพิ่มในองค์ประกอบที่อยากเรืองแสง) ===== */
+.theme-glow {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 8px 30px rgba(255, 2, 2, 0.18),
+    0 2px 10px rgba(247, 85, 217, 0.18);
+}
+.theme-soft-shadow {
+  box-shadow:
+    0 10px 40px rgba(255, 2, 2, 0.15),
+    inset 0 0 30px rgba(247, 85, 217, 0.12);
+}
+
+/* ===== พื้นหลังไล่สีเฉพาะจุด (ถ้าต้องการเรียกใช้ง่ายๆ) ===== */
+.bg-hero-gradient {
+  background-image: linear-gradient(45deg, #ff0202 10%, #f755d9 93%);
+}
+.text-hero-gradient {
+  background-image: linear-gradient(90deg, #ff0202, #f755d9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ===== (ออพชัน) ตัวอย่างคลาส “หมอก” แดงชมพู ใช้คู่กับ backdrop-blur ===== */
+.ambient-fog {
+  background: radial-gradient(600px 400px at 50% 50%, rgba(255, 2, 2, 0.12), transparent 60%),
+              radial-gradient(600px 400px at 60% 40%, rgba(247, 85, 217, 0.12), transparent 60%);
+  filter: blur(40px);
+  pointer-events: none;
+}
+
+/* ===== (ของเดิมที่คอมเมนต์ไว้ เก็บเผื่อใช้) =====
+.container { width: 100%; height: 100%; }
+.main > div { position: absolute; will-change: transform; border-radius: 50%; background: lightcoral; box-shadow: 10px 10px 5px rgba(0,0,0,.75); opacity: 0.6; }
+.main { position: absolute; width: 100%; height: 100%; filter: url('#blob'); overflow: hidden; background: transparent; user-select: none; cursor: default; }
+*/
